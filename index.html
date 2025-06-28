@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCredit Co.</title>
+    <title>Bank of Real Optimists</title>
 
      <link rel="shortcut icon" href="images/fav.png" type="image/png">
     <style>
@@ -350,8 +350,8 @@
                 <div class="logo"><img src="images/logo1.png" alt=""></div>
                 <h1>We give you a credit</h1>
                 <div class="header-links">
-                    <a href="https://x.com/smartcreditloan" class="header-link" target="_blank">Twitter</a>
-                    <a href="https://pump.fun/advanced/coin?mintId=12mXgoZpAzaR4xW19sQNsFYDm3mk7iRSRzQAskT6pump" class="header-link" target="_blank">$LOAN</a>
+                    <a href="https://x.com/brobankoptimist" class="header-link" target="_blank">Twitter</a>
+                    <a href="https://pump.fun/advanced/coin?mintId=1JFqTqUwSTDEQpD5gXX4vnKrPC4fFfKS5bkwkcNpump" class="header-link" target="_blank">$BroBank</a>
                 </div>
               <div class="market-data">
     <div class="market-item">
@@ -381,7 +381,7 @@
                     </div>
                     <div class="form-group">
                         <label for="wallet">Wallet Address</label>
-                        <input type="text" id="wallet" placeholder="Your $LOAN wallet address">
+                        <input type="text" id="wallet" placeholder="Your $BroBank wallet address">
                     </div>
                     <button class="btn" id="generate-btn">Get your Credit company</button>
                 </div>
@@ -394,7 +394,7 @@
                             <div class="card-number" id="card-number">•••• •••• •••• ••••</div>
                             <div class="card-details">
                                 <div class="card-holder" id="card-holder">NAME</div>
-                                <div class="card-balance" id="card-balance">0 $LOAN</div>
+                                <div class="card-balance" id="card-balance">0 $BroBank</div>
                             </div>
                             <div class="card-logo">CC</div>
                         </div>
@@ -409,17 +409,17 @@
             <div class="card-examples">
                 <div class="example-card">
                    <img src="images/STANDARD.png" alt="">
-                   <div class="card-balance-label">100 000 $LOAN</div>
+                   <div class="card-balance-label">100 000 $BroBank</div>
                 </div>
                 
                 <div class="example-card">
                    <img src="images/GOLD.png" alt="">
-                   <div class="card-balance-label">500 000 $LOAN</div>
+                   <div class="card-balance-label">500 000 $BroBank</div>
                 </div>
                 
                 <div class="example-card">
                     <img src="images/PLATINUM.png" alt="">
-                    <div class="card-balance-label">1 000 000 $LOAN</div>
+                    <div class="card-balance-label">1 000 000 $BroBank</div>
                 </div>
             </div>
         </div>
@@ -508,7 +508,7 @@
                 
                 document.getElementById('card-number').textContent = formattedNumber.join(' ');
                 document.getElementById('card-holder').textContent = name.toUpperCase();
-                document.getElementById('card-balance').textContent = cardBalance.toLocaleString() + ' $LOAN';
+                document.getElementById('card-balance').textContent = cardBalance.toLocaleString() + ' $BroBank';
                 
                 document.getElementById('card-preview').style.display = 'block';
                 
@@ -533,7 +533,7 @@
 
         // API Configuration
         const API_KEY = 'd17c26bc-4660-4813-a180-bd1de658d322';
-        const TOKEN_ADDRESS = '12mXgoZpAzaR4xW19sQNsFYDm3mk7iRSRzQAskT6pump';
+        const TOKEN_ADDRESS = '1JFqTqUwSTDEQpD5gXX4vnKrPC4fFfKS5bkwkcNpump';
         const API_URL = `https://data.solanatracker.io/tokens/${TOKEN_ADDRESS}`;
 
         // Format large numbers
