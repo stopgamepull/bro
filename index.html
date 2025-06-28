@@ -1,0 +1,609 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCredit Co.</title>
+
+     <link rel="shortcut icon" href="images/fav.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #222;
+            line-height: 1.6;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid #eaeaea;
+            margin-bottom: 30px;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo img {
+            width: 250px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #444;
+        }
+        
+        .header-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+                position: absolute;
+    right: 2.5%;
+        }
+        
+        .header-link {
+            color: #222;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.2s;
+            border: 1px solid #ddd;
+        }
+        
+        .header-link:hover {
+            background: #f0f0f0;
+        }
+        
+        .market-data {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+
+            font-size: 15px;
+
+        }
+        
+        .market-item {
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .market-value {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
+        
+        .market-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .main-content {
+            display: flex;
+            gap: 40px;
+            flex-grow: 1;
+        }
+        
+        .form-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+        
+        input:focus {
+            border-color: #999;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+        }
+        
+        .btn {
+            padding: 14px 20px;
+            background: #222;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+        
+        .btn:hover {
+            background: #111;
+        }
+        
+        .card-examples {
+            width: 360px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+                justify-content: space-between;
+        }
+        
+        .example-card {
+            width: 100%;
+          height: 190px;
+            border-radius: 12px;
+            color: transparent;
+            position: relative;
+        }
+
+        .example-card img {
+            width: 100%;
+            height: 80%;
+            object-fit: contain;
+        }
+        
+        .card-balance-label {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .card-preview-container {
+            margin-top: auto;
+            text-align: center;
+        }
+        
+        .card-preview {
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .card {
+            width: 360px;
+            height: 220px;
+            border-radius: 12px;
+            padding: 25px;
+            color: white;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-standard {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+        }
+        
+        .card-gold {
+            background: linear-gradient(135deg, #b8860b, #d4af37);
+        }
+        
+        .card-platinum {
+            background: linear-gradient(135deg, #808080, #e5e4e2);
+            color: #222;
+        }
+        
+        .card-type {
+            text-align: right;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .card-chip {
+            width: 50px;
+            height: 35px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 6px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-chip::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                          rgba(255,255,255,0.3) 0%, 
+                          rgba(255,255,255,0) 50%);
+        }
+        
+        .card-number {
+            font-family: 'Space Mono', monospace;
+            letter-spacing: 3px;
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            font-size: 15px;
+        }
+        
+        .card-holder {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .card-balance {
+            font-weight: 700;
+                position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+        }
+        
+        .card-logo {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        
+        .card-actions {
+            /* margin-top: 30px; */
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #222;
+            border: 1px solid #ddd;
+            margin-top: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background: #f8f8f8;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .metric-change {
+            display: none;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo"><img src="images/logo1.png" alt=""></div>
+                <h1>We give you a credit</h1>
+                <div class="header-links">
+                    <a href="https://x.com/smartcreditloan" class="header-link" target="_blank">Twitter</a>
+                    <a href="https://pump.fun/advanced/coin?mintId=12mXgoZpAzaR4xW19sQNsFYDm3mk7iRSRzQAskT6pump" class="header-link" target="_blank">$LOAN</a>
+                </div>
+              <div class="market-data">
+    <div class="market-item">
+        <div class="market-value" id="mcap">$42.7M</div>
+        <div class="market-label">Market Cap</div>
+    </div>
+    <div class="market-item">
+        <div class="market-value" id="holders">651,269</div>
+        <div class="market-label">Cardholders</div>
+        <div class="metric-change" id="holders-change">■ 0.00%</div>
+    </div>
+    <div class="market-item">
+        <div class="market-value" id="supply">1B</div>
+        <div class="market-label">Supply</div>
+    </div>
+</div>
+<div class="last-updated" id="last-updated" style="text-align: center; font-size: 12px; color: #666; margin-top: 5px;"></div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="form-section">
+                <div class="card-form-container">
+                    <div class="form-group">
+                        <label for="name">Cardholder Name</label>
+                        <input type="text" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="wallet">Wallet Address</label>
+                        <input type="text" id="wallet" placeholder="Your $LOAN wallet address">
+                    </div>
+                    <button class="btn" id="generate-btn">Get your Credit company</button>
+                </div>
+                
+                <div class="card-preview-container">
+                    <div class="card-preview" id="card-preview">
+                        <div class="card" id="card">
+                            <div class="card-type" id="card-type">STANDARD</div>
+                            <div class="card-chip"></div>
+                            <div class="card-number" id="card-number">•••• •••• •••• ••••</div>
+                            <div class="card-details">
+                                <div class="card-holder" id="card-holder">NAME</div>
+                                <div class="card-balance" id="card-balance">0 $LOAN</div>
+                            </div>
+                            <div class="card-logo">CC</div>
+                        </div>
+                        
+                        <div class="card-actions">
+                            <button class="btn btn-secondary" id="download-btn">Download Card</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-examples">
+                <div class="example-card">
+                   <img src="images/STANDARD.png" alt="">
+                   <div class="card-balance-label">100 000 $LOAN</div>
+                </div>
+                
+                <div class="example-card">
+                   <img src="images/GOLD.png" alt="">
+                   <div class="card-balance-label">500 000 $LOAN</div>
+                </div>
+                
+                <div class="example-card">
+                    <img src="images/PLATINUM.png" alt="">
+                    <div class="card-balance-label">1 000 000 $LOAN</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('generate-btn').addEventListener('click', async function() {
+            const name = document.getElementById('name').value.trim();
+            const wallet = document.getElementById('wallet').value.trim();
+            
+            if (!name || !wallet) {
+                alert('Please enter both name and wallet address');
+                return;
+            }
+            
+            const btn = document.getElementById('generate-btn');
+            btn.innerHTML = '<span class="loading"></span> Checking wallet...';
+            btn.disabled = true;
+            
+            try {
+                // Fetch wallet data from SolanaTracker API
+                const response = await fetch(`https://data.solanatracker.io/wallet/${wallet}`, {
+                    headers: {
+                        'accept': '*/*',
+                        'accept-language': 'ru,en;q=0.9',
+                        'cache-control': 'no-cache',
+                        'content-type': 'application/json',
+                        'origin': 'https://www.solanatracker.io',
+                        'pragma': 'no-cache',
+                        'priority': 'u=1, i',
+                        'referer': 'https://www.solanatracker.io/',
+                        'sec-ch-ua': '"Chromium";v="134", "Not:A-Brand";v="24", "YaBrowser";v="25.4", "Yowser";v="2.5"',
+                        'sec-ch-ua-mobile': '?0',
+                        'sec-ch-ua-platform': '"Windows"',
+                        'sec-fetch-dest': 'empty',
+                        'sec-fetch-mode': 'cors',
+                        'sec-fetch-site': 'same-site',
+                        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 YaBrowser/25.4.0.0 Safari/537.36',
+                        'x-api-key': 'd17c26bc-4660-4813-a180-bd1de658d322'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Find CC token in wallet (assuming token name is "Credit company")
+                const CCToken = data.tokens.find(token => 
+                    token.token && token.token.name === "Credit company");
+                
+                if (!CCToken) {
+                    throw new Error('No Credit company token found in this wallet');
+                }
+                
+                const balance = CCToken.balance;
+                
+                // Determine card type based on balance
+                let cardType, cardBalance;
+                console.log(balance);
+                if (balance >= 1000000) {
+                    cardType = 'platinum';
+                    cardBalance = Math.floor(balance);
+                } else if (balance >= 500000) {
+                    cardType = 'gold';
+                    cardBalance = Math.floor(balance);
+                } else {
+                    cardType = 'standard';
+                    cardBalance = Math.floor(balance);
+                }
+                
+                // Update card UI
+                const card = document.getElementById('card');
+                card.className = 'card card-' + cardType;
+                
+                document.getElementById('card-type').textContent = cardType.toUpperCase();
+                
+                let cardNumber = wallet.replace(/[^a-zA-Z0-9]/g, '').substring(0, 16).toUpperCase();
+                if (cardNumber.length < 16) cardNumber = cardNumber.padEnd(16, 'X');
+                
+                const formattedNumber = [];
+                for (let i = 0; i < 16; i += 4) {
+                    formattedNumber.push(cardNumber.substring(i, i + 4));
+                }
+                
+                document.getElementById('card-number').textContent = formattedNumber.join(' ');
+                document.getElementById('card-holder').textContent = name.toUpperCase();
+                document.getElementById('card-balance').textContent = cardBalance.toLocaleString() + ' $LOAN';
+                
+                document.getElementById('card-preview').style.display = 'block';
+                
+                // Прокрутка к созданной карте
+                document.getElementById('card-preview').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+                
+            } catch (error) {
+                console.error('Error generating card:', error);
+                alert('Error: ' + error.message);
+            } finally {
+                btn.textContent = 'Generate Card';
+                btn.disabled = false;
+            }
+        });
+        
+        document.getElementById('download-btn').addEventListener('click', function() {
+            alert('Card image downloaded (simulated)');
+        });
+
+        // API Configuration
+        const API_KEY = 'd17c26bc-4660-4813-a180-bd1de658d322';
+        const TOKEN_ADDRESS = '12mXgoZpAzaR4xW19sQNsFYDm3mk7iRSRzQAskT6pump';
+        const API_URL = `https://data.solanatracker.io/tokens/${TOKEN_ADDRESS}`;
+
+        // Format large numbers
+        function formatNumber(num) {
+            return new Intl.NumberFormat('en-US').format(Math.round(num));
+        }
+
+        // Update change indicators
+        function updateChangeIndicator(elementId, changePercent) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            if (changePercent > 0) {
+                element.textContent = `▲ ${changePercent.toFixed(2)}%`;
+                element.className = 'metric-change positive';
+            } else if (changePercent < 0) {
+                element.textContent = `▼ ${Math.abs(changePercent).toFixed(2)}%`;
+                element.className = 'metric-change negative';
+            } else {
+                element.textContent = `■ 0.00%`;
+                element.className = 'metric-change';
+            }
+        }
+
+        // Fetch data from SolanaTracker API
+        async function fetchMarketData() {
+            try {
+                const response = await fetch(API_URL, {
+                    headers: {
+                        'x-api-key': API_KEY
+                    }
+                });
+                
+                if (!response.ok) throw new Error(`API error: ${response.status}`);
+                
+                const data = await response.json();
+                updateUI(data);
+                
+            } catch (error) {
+                console.error('Error fetching fund data:', error);
+                document.getElementById('mcap').textContent = '0';
+                document.getElementById('holders').textContent = '0';
+                document.getElementById('supply').textContent = '0';
+            }
+        }
+
+        // Update UI with API data
+        function updateUI(data) {
+            // Update market metrics
+            const mcap = data.pools?.[0]?.marketCap?.usd || 0;
+            const holders = data.holders || 0;
+            const supply = data.pools?.[0]?.tokenSupply || 0;
+            
+            document.getElementById('mcap').textContent = `$${mcap >= 1000000 ? (mcap/1000000).toFixed(2)+'M' : formatNumber(mcap)}`;
+            document.getElementById('holders').textContent = formatNumber(holders);
+            document.getElementById('supply').textContent = supply >= 1000000 ? (supply/1000000).toFixed(2)+'M' : formatNumber(supply);
+            
+            // Update holders change (using 24h change as example)
+            const holdersChange24h = data.events?.['24h']?.priceChangePercentage || 0;
+            updateChangeIndicator('holders-change', holdersChange24h);
+            
+            // Update last updated time
+            document.getElementById('last-updated').textContent = 'Updated: ' + new Date().toLocaleTimeString();
+        }
+
+        // Initial data load
+        fetchMarketData();
+
+        // Refresh data every 5 seconds
+        setInterval(fetchMarketData, 5000);
+    </script>
+
+</body></html>
